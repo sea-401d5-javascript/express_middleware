@@ -1,16 +1,16 @@
 'use strict';
-const superJSONparser = require('../lib/superJSONparser');
-var MockReq = require('mock-req');
 const chai = require('chai');
 const expect = require('chai').expect;
 const chaiHTTP = require('chai-http');
 chai.use(chaiHTTP);
 const request = chai.request;
-require('../server')
+require('../server');
 
 describe('INTEGRATION TEST: SuperJSONparser should', function () {
   it('super return a super error for non JSON', function (done) {
-    let payload = {message:"test message"}
+    let payload = {
+      message: 'test message'
+    };
     request('localhost:3000')
       .post('/api')
       .send(payload)
@@ -21,16 +21,16 @@ describe('INTEGRATION TEST: SuperJSONparser should', function () {
         expect(res.text).to.eql('{"Message": "POST received"}');
         done();
       });
-        });
+  });
 
-      it('super return a super error for non JSON', function (done) {
-        let payload = "dsfa"
-        request('localhost:3000')
-          .post('/api')
-          .send(payload)
-          .end(function (err, res) {
-            expect(err).to.have.status(422);
-            done();
-          });
+  it('super return a super error for non JSON', function (done) {
+    let payload = 'dsfa';
+    request('localhost:3000')
+      .post('/api')
+      .send(payload)
+      .end(function (err, res) {
+        expect(err).to.have.status(422);
+        done();
       });
-        });
+  });
+});

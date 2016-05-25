@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = (req, res, next) =>{
   var body = '';
@@ -7,9 +7,7 @@ module.exports = (req, res, next) =>{
   });
   req.on('end', () => {
     try {
-      var parsed = JSON.parse(body);
-      req.body = parsed;
-
+      req.body = JSON.parse(body);
     } catch (e) {
       e.message = 'Invalid JSON';
       e.statusCode = 422;
@@ -17,4 +15,4 @@ module.exports = (req, res, next) =>{
     }
     next();
   });
-}
+};

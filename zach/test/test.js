@@ -13,20 +13,22 @@ let erStream;
 
 
 describe('Middleware-Unit Testing', () => {
-  it('passing valid json into the middleware should return valid json', () => {
+  it('passing valid json into the middleware should return valid json', (done) => {
     reqStream = new Readable();
     reqStream.push('{"message": "test"}');
     reqStream.push(null);
     parser(reqStream, {}, () => {
       expect(reqStream.body).to.eql({message: "test"});
+      done();
     })
   })
-  it('passing invalid json into the middleware should return an invalid json err', () => {
+  it('passing invalid json into the middleware should return an invalid json err', (done) => {
     erStream = new Readable();
     erStream.push('{"message: invalidjson"}');
     erStream.push(null);
     parser(erStream, {}, (e) => {
       expect(e.message).to.eql('invalid json');
+      done();
     })
   })
 })

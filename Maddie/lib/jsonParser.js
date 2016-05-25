@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (req,res,next) => {
+module.exports =  (req,res,next) => {
   var getJson = '';
   req.on('data', (data) => {
     getJson += data.toString();
@@ -12,7 +12,8 @@ module.exports = (req,res,next) => {
       next();
     } catch (error) {
       error.message = 'invalid json' + '\n'
-      res.send(error.message)
+      //res.send(error.message)
+      next(error);
     }
   })
 }

@@ -15,4 +15,16 @@ app.post('/articles', (req, res) => {
   res.end();
 });
 
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(err.status || 500).son({
+    message: err.message
+  });
+});
+
+app.use((req, res) => {
+  res.status(404).json({
+    message: 'page not found'
+  });
+});
 app.listen(3000, function() {console.log('listening on port 3000')});

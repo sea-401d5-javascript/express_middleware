@@ -14,7 +14,6 @@ module.exports = (req, res, next) => {
       err.status = 422;
       console.log(err.message, err.status);
       return next(err);
-      // next();
     }
     next();
   });

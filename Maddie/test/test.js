@@ -35,27 +35,28 @@ describe('HTTP TEST', () => {
 describe('Unit Test', () => {
   let req;
   let req2;
-  it('passing in valid json should return parse ', () => {
+  it('passing in valid json should return parse ', (done) => {
       req = new Readable();
       req.push('{"msg":"unit test"}')
       req.push(null)
 
       jsonParser(req, {}, () => {
         console.log(req.body)
-        expect(req.body).to.eql(3)
+        expect(req.body).to.eql({msg:'unit test'})
+        done();
 
       })
     })
 
-  // it('should return error message when pass in invalid json', () => {
-  //   req2 = new Readable();
-  //   req2.push('{"msg":"not working}')
-  //   req2.push(null)
-  //
-  //   jsonParser(req2, {}, (error) => {
-  //     console.log(error.message)
-  //     expect(error.message).to.eql('invalid json' + '\n')
-  //
-  //   })
-  // })
+  it('should return error message when pass in invalid json', (done) => {
+    req2 = new Readable();
+    req2.push('{"msg":"not working}')
+    req2.push(null)
+
+    jsonParser(req2, {}, (error) => {
+      console.log(error.message)
+      expect(error.message).to.eql('invalid json' + '\n')
+      done();
+    })
+  })
 })

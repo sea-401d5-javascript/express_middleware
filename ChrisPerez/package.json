@@ -1,0 +1,31 @@
+{
+  "name": "express_middleware",
+  "version": "1.0.0",
+  "description": "##To Submit this Assignment   * fork this repository   * write all of your code in a folder containing your name   * push to your repository   * submit a pull request to this repository   * submit a link to your PR in canvas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckperez/express_middleware.git"
+  },
+  "keywords": [],
+  "author": "Chris Perez <chris.k.perez@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ckperez/express_middleware/issues"
+  },
+  "homepage": "https://github.com/ckperez/express_middleware#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.5.3"
+  }
+}

@@ -14,6 +14,7 @@ exports.parse = function jsonParser(req, res, next) {
       req.status = requestObj.status = 200;
       if (next) next();
     } catch(err) {
+      console.log('Error', err);
       req.body = requestObj.err = {"Message":"invalid json"};
       req.status = requestObj.statusErr = 400;
       if (next) next();

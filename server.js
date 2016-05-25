@@ -10,20 +10,18 @@ var fileRouter = new express.Router();
 
 const model = {
   data: {
-    msg: "hello ther"
+    msg: 'hello ther'
   },
 
   nodata: {
-    msg: "No model"
+    msg: 'No model'
   }
 };
-
 
 app.use((req, res, next) => {
   req.model = model;
   next();
 });
-
 
 routerSetData.use(jsonModelParser);
 
@@ -42,7 +40,7 @@ routerSetData.post('/', (req, res) => {
     msg: 'valid data',
     data: req.body
   });
-})
+});
 
 app.use('/drew', routerGetData);
 app.use('/drew', routerSetData);

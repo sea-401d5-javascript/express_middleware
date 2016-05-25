@@ -12,16 +12,16 @@ describe('tests for jsonModelParser', () => {
     var req = new MockReq({
       method: 'POST',
       url: '/'
-    })
+    });
 
-    let data = {will:"work"}
+    let data = {will:'work'};
     req.write(data);
     req.end();
     jsonModelParser(req, res, function(e)  {
       if(e) {
         done(e);
       } else {
-        expect(req.body).to.eql(data)
+        expect(req.body).to.eql(data);
         done();
       }
     });
@@ -32,19 +32,19 @@ describe('tests for jsonModelParser', () => {
     var req = new MockReq({
       method: 'POST',
       url: '/'
-    })
+    });
 
-    let data = ("work")
+    let data = ('work');
     req.write(data);
     req.end();
     jsonModelParser(req, res, function(e)  {
       if(e) {
-        expect(e.message).to.eql('invalid json')
-        expect(e.statusCode).to.eql(422)
+        expect(e.message).to.eql('invalid json');
+        expect(e.statusCode).to.eql(422);
         done();
       } else {
         done(new Error('JSON worked'));
       }
     });
   });
-})
+});

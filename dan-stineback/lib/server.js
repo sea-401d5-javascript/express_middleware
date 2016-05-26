@@ -7,13 +7,12 @@ const jsonParser = require(__dirname + '/jsonParser');
 app.use('/zoots', jsonParser);
 
 app.post('/zoots', (req, res) => {
-  res.send(req.body);
+  res.send('JSON parsed');
 });
 
 app.use((err, req, res, next) => {
   console.log(err);
-  res.status(err.statusCode || 500).json({msg: error.message});
-  next();
+  res.status(err.statusCode || 500).json({msg: err.message});
 });
 
 

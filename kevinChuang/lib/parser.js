@@ -14,7 +14,7 @@ exports = module.exports = (req,res,next) => {
     } catch (e) {
       e.message = 'invalid Jayson';
       e.statusCode = 422;
-      return next(e);
+      next(e);
     }
     next();
   });

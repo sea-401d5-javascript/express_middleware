@@ -16,9 +16,19 @@ describe('Unit testing', ()=> {
     expect(typeof parser).to.eql('function');
   });
 
-  it('should parse incoming JSON',(done)=> {
-    var data = new stream.Readable();
-    data.push('{"test":"testText"}');
-    console.log(parser(data));
+  it('should parse incoming valid JSON',(done)=> {
+    var req = fs.createReadStream(__dirname + '/goodJson.json');
+    parser(req,null,()=> {
+      expect(req.body.message).to.eql('test');
+      done();
+    });
+  });
+
+  it('should error with incoming invalid JSON',(done)=> {
+    var req = fs.createReadStream(__dirname + '/badJson.json');
+    parser(req,null,(e)=>{
+      expect(e.message).to.eql('invalid Jayson');
+      done();
+    });
   });
 });

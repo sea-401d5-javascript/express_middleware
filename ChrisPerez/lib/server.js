@@ -7,7 +7,8 @@ const jsonParser = require(__dirname + '/jsonParser');
 app.use('/', jsonParser);
 
 app.post('/', (req, res)=>{
-  res.send(req.body);
+  console.log(req.body);
+  res.send('JSON parsed');
 })
 
 app.use((err, req, res, next) => {

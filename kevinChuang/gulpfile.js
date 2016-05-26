@@ -25,10 +25,10 @@ gulp.task('lint', () => {
 });
 
 gulp.task('Mochai', () => {
-  gulp.src(['./test/*'])
+  gulp.src(['./test/integrationtest.js','./test/unittest.js'])
   .pipe(mocha());
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['./*.js','./test*.js'],['lint','Mochai']);
+  gulp.watch(['./*.js','./test/*.js'],['lint','Mochai']);
 });

@@ -26,8 +26,8 @@ describe('Unit testing', ()=> {
 
   it('should error with incoming invalid JSON',(done)=> {
     var req = fs.createReadStream(__dirname + '/badJson.json');
-    parser(req,null,(e)=>{
-      expect(e.message).to.eql('invalid Jayson');
+    parser(req,null,(err)=>{
+      expect(err.message).to.eql('invalid Jayson');
       done();
     });
   });

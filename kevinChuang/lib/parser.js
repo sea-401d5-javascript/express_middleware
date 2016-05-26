@@ -11,10 +11,10 @@ exports = module.exports = (req,res,next) => {
     try {
       var parsedLoad = JSON.parse(payload);
       req.body = parsedLoad;
-    } catch (e) {
-      e.message = 'invalid Jayson';
-      e.statusCode = 422;
-      next(e);
+    } catch (err) {
+      err.message = 'invalid Jayson';
+      err.statusCode = 422;
+      next(err);
     }
     next();
   });

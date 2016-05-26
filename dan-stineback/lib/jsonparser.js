@@ -4,17 +4,18 @@ module.exports = (req, res, next)=>{
    var sumJson = '';
    req.on('data', (data)=> {
      sumJson += data.toString();
+     console.log('sumJson', sumJson);
    });
    req.on('end', () => {
      try {
-       req.body = JSON.parse(sumJson);
-       console.log(req.body);
-       console.log('POST sent');
+       let parsed = JSON.parse(sumJson);
+       req.body = parsed;
+       console.log('req.body', req.body);
        next();
      } catch (err){
-      res.status(422).send({msg: 'invalid JSON'});
-      res.end();
-      next(err);
+      err.message = 'invalid JSON';
+      err.statusCode = 422;
+      return next(err);
      }
    });
  };

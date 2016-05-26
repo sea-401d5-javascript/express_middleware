@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const app = express();
-const jsonParser = require(__dirname + '/jsonparser');
+const jsonParser = require(__dirname + '/jsonParser');
 
 
 app.use('/zoots', jsonParser);
